@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storymaker</title>
+    <style>
+        .word{
+            border: 1px solid blue;
+            width: 80px;
+            height: 60px;
+            margin: 20px;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aquamarine;
+
+
+            
+
+            
+        }
+        #storyDiv{
+            border: 1px dashed red;
+            font-size: large;
+            padding: 10px;
+        }
+        #word-container{
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+
+            position: relative;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+<div id="storyDiv"></div>
+<div id="word-container">
+
+    <div class="word" onclick="click1(this)">Grønn</div>
+    <div class="word" onclick="click1(this)">Katt</div>
+    <div class="word" onclick="click1(this)">Stirret</div>
+    <div class="word" onclick="click1(this)">Basseng</div>
+    <div class="word" onclick="click1(this)">Rød</div>
+    <div class="word" onclick="click1(this)">Mann</div>
+    <div class="word" onclick="click1(this)">Hoppet</div>
+    <div class="word" onclick="click1(this)">Vegg</div>
+</div>    
+
+    <script>
+        //model
+        let storyDiv = document.getElementById('storyDiv');
+        let storyList = [];
+        let counter = 0;
+        
+        let wordList = [];
+
+        storyList[0] = "Det var en gang en ";
+        storyList[1] = " som var ";
+        storyList[2] = " på en ";
+        storyList[3] = " Han ";
+        storyList[4] = " så over en ";
+        storyList[5] = " og så samtidig en ";
+        storyList[6] = " Etterpå var den ";
+        storyList[7] = " og ";
+
+        wordList[0] = "____";
+        wordList[1] = " ____ ";
+        wordList[2] = " ____ ";
+        wordList[3] = " ____ ";
+        wordList[4] = " ____ ";
+        wordList[5] = " ____ ";
+        wordList[6] = " ____ ";
+        wordList[7] = " ____ ";
+
+        showStory();
+
+
+        //controller
+        function click1(tag){
+            wordList[counter] = tag.innerHTML;
+            
+            showStory();
+            counter++;
+            if(counter > 7){
+                counter = 0;
+
+            }
+
+            console.log(wordList);
+            console.log(storyList);
+
+        }
+        //view
+        function showStory(){
+            storyDiv.innerHTML = '';
+            for(let i = 0; i < 8 ; i++){
+                storyDiv.innerHTML += storyList[i] + wordList[i];
+
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>
